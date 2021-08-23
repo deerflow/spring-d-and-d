@@ -1,12 +1,23 @@
 package app.characters;
 
 public class Character {
-    private final int id;
-    private String name;
-    private CharacterType type;
-    private int lifePoints;
 
-    Character(int id, String name, CharacterType type, int lifePoints) {
+    private Integer id;
+    private String name;
+    private String type;
+    private Integer lifePoints;
+
+    Character() {
+    }
+
+    Character(String name, String type, int lifePoints) {
+        this.id = Characters.list.size() + 1;
+        this.name = name;
+        this.type = type;
+        this.lifePoints = lifePoints;
+    }
+
+    Character(int id, String name, String type, int lifePoints) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -25,11 +36,11 @@ public class Character {
         this.name = name;
     }
 
-    public CharacterType getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(CharacterType type) {
+    public void setType(String type) {
         this.type = type;
     }
 
