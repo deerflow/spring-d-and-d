@@ -40,4 +40,9 @@ public class CharacterController {
             return null;
         }
     }
+
+    @DeleteMapping("/characters/{id}")
+    public boolean deleteCharacter(@PathVariable(name = "id") int id) {
+        return Characters.list.removeIf(character -> character.getId() == id);
+    }
 }
