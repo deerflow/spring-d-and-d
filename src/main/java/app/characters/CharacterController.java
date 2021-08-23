@@ -23,8 +23,21 @@ public class CharacterController {
     }
 
     @PostMapping("/characters")
-    public Character createCharacter(@RequestBody Character character) {
+    public int createCharacter(@RequestBody Character character) {
         Characters.list.add(character);
-        return character;
+        return character.getId();
+    }
+
+    @PutMapping("/characters")
+    public Character updateCharacter(@RequestBody Character newCharacter) {
+        {
+            for (Character character : Characters.list) {
+                if (character.getId() == newCharacter.getId()) {
+                    Characters.list.set(Characters.list.indexOf(character), newCharacter);
+                    return newCharacter;
+                }
+            }
+            return null;
+        }
     }
 }
